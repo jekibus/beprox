@@ -1,6 +1,6 @@
 # BeProx - Development Plan
 
-**Goal**: Build a desktop application like [LocalCan](https://www.localcan.com) using Tauri, enabling developers to expose local servers via `.local` domains and public URLs, with traffic inspection capabilities.
+**Goal**: Build a desktop application using Tauri, enabling developers to expose local servers via `.local` domains and public URLs, with traffic inspection capabilities.
 
 ## Phase 1: MVP - Local Domain Proxy 🚀
 - [x] **Setup Tauri Workspace**
