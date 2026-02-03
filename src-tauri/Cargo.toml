@@ -1,6 +1,6 @@
 [package]
 name = "beprox"
-version = "0.1.0"
+version = "0.0.1"
 description = "BeProx App"
 authors = ["Jeki"]
 edition = "2021"
