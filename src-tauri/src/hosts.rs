@@ -3,6 +3,11 @@ use std::io::Write;
 
 const START_MARKER: &str = "## BeProx - Start ##";
 const END_MARKER: &str = "## BeProx - End ##";
+
+#[cfg(target_os = "windows")]
+const HOSTS_PATH: &str = r"C:\Windows\System32\drivers\etc\hosts";
+
+#[cfg(not(target_os = "windows"))]
 const HOSTS_PATH: &str = "/etc/hosts";
 
 #[tauri::command]
@@ -111,7 +116,14 @@ pub fn remove_host_entry(domain: &str) -> Result<(), String> {
 
 fn write_hosts_file(content: &str) -> Result<(), String> {
     let mut file = File::create(HOSTS_PATH)
-        .map_err(|e| format!("Failed to open hosts file for writing: {}. Are you running with sudo?", e))?;
+        .map_err(|e| {
+            #[cfg(target_os = "windows")]
+            let msg = "Are you running as Administrator?";
+            #[cfg(not(target_os = "windows"))]
+            let msg = "Are you running with sudo?";
+            
+            format!("Failed to open hosts file for writing: {}. {}", e, msg)
+        })?;
     file.write_all(content.as_bytes()).map_err(|e| e.to_string())?;
     Ok(())
 }

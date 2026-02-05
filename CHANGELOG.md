@@ -5,6 +5,16 @@ All notable changes to BeProx will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.7] - 2026-02-05
+
+### Added
+- **Cross-Platform Support**: Added support for Windows hosts file modification (`C:\Windows\System32\drivers\etc\hosts`).
+- **Linux Support**: Validated support for Linux `/etc/hosts` modification.
+
+### Changed
+- **Host Management**: Updated hosts file logic to be platform-aware using Rust `cfg` attributes.
+- **Error Messages**: Improved permission error messages to be specific to the operating system (Administrator vs sudo).
+
 ## [0.0.6] - 2026-02-03
 
 ### Changed
